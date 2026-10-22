@@ -1,0 +1,52 @@
+diff --git a/racecar_gym/bullet/sensors.py b/racecar_gym/bullet/sensors.py
+--- a/racecar_gym/bullet/sensors.py
++++ b/racecar_gym/bullet/sensors.py
+@@ -60 +60 @@
+-class Lidar(BulletSensor[NDArray[(Any,), np.float]]):
++class Lidar(BulletSensor[NDArray[(Any,), np.float64]]):
+@@ -114 +114 @@
+-    def observe(self) -> NDArray[(Any,), np.float]:
++    def observe(self) -> NDArray[(Any,), np.float64]:
+@@ -161 +161 @@
+-class RGBCamera(BulletSensor[NDArray[(Any, Any, 3), np.int]]):
++class RGBCamera(BulletSensor[NDArray[(Any, Any, 3), np.int64]]):
+@@ -187 +187 @@
+-    def observe(self) -> NDArray[(Any, Any, 3), np.int]:
++    def observe(self) -> NDArray[(Any, Any, 3), np.int64]:
+@@ -210 +210 @@
+-class AccelerationSensor(BulletSensor[NDArray[(6,), np.float]]):
++class AccelerationSensor(BulletSensor[NDArray[(6,), np.float64]]):
+@@ -229 +229 @@
+-    def observe(self) -> NDArray[(6,), np.float]:
++    def observe(self) -> NDArray[(6,), np.float64]:
+@@ -240 +240 @@
+-class VelocitySensor(BulletSensor[NDArray[(6,), np.float]]):
++class VelocitySensor(BulletSensor[NDArray[(6,), np.float64]]):
+@@ -263 +263 @@
+-    def observe(self) -> NDArray[(6,), np.float]:
++    def observe(self) -> NDArray[(6,), np.float64]:
+@@ -270 +270 @@
+-class PoseSensor(BulletSensor[NDArray[(6,), np.float]]):
++class PoseSensor(BulletSensor[NDArray[(6,), np.float64]]):
+@@ -286 +286 @@
+-    def observe(self) -> NDArray[(6,), np.float]:
++    def observe(self) -> NDArray[(6,), np.float64]:
+diff --git a/racecar_gym/bullet/util.py b/racecar_gym/bullet/util.py
+--- a/racecar_gym/bullet/util.py
++++ b/racecar_gym/bullet/util.py
+@@ -9 +9 @@
+-def get_velocity(id: int) -> NDArray[(6,), np.float]:
++def get_velocity(id: int) -> NDArray[(6,), np.float64]:
+@@ -19 +19 @@
+-def get_pose(id: int) -> Optional[NDArray[(6,), np.float]]:
++def get_pose(id: int) -> Optional[NDArray[(6,), np.float64]]:
+diff --git a/racecar_gym/core/specs.py b/racecar_gym/core/specs.py
+--- a/racecar_gym/core/specs.py
++++ b/racecar_gym/core/specs.py
+@@ -34,4 +34,4 @@
+ class AgentSpec(YamlDataClassConfig):
+     id: str
+-    vehicle: VehicleSpec = VehicleSpec()
+-    task: TaskSpec = TaskSpec()
++    vehicle: VehicleSpec = field(default_factory=VehicleSpec)
++    task: TaskSpec = field(default_factory=TaskSpec)

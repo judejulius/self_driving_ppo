@@ -1,0 +1,25 @@
+# Environments and caches
+.venv/
+.uv-cache/
+.python/
+.conda-env/
+.conda-pkgs/
+.mamba-root/
+.tools/
+.tmp/
+.vendor/
+.upstream/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Training outputs
+artifacts*/
+tensor_optix_checkpoints/
+*.mp4
+.inspect_media/
+.git
+.gitignore
+.gitattributes

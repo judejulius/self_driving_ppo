@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "racecar-ppo"
+version = "0.1.0"
+description = "PPO self-driving training with Racecar Gym and Tensor Optix"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = "MIT"
+dependencies = [
+  "gymnasium>=1.0,<2",
+  "matplotlib>=3.8",
+  "nptyping<2",
+  "numpy>=1.26,<2",
+  "optuna>=3.6",
+  "pettingzoo>=1.22,<2",
+  "pybullet>=3.2.6; platform_system != 'Windows'",
+  "pyyaml>=6",
+  "rich>=13.7",
+  "scipy>=1.11",
+  "torch>=2.11",
+  "yamldataclassconfig==1.5.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "pytest-cov>=4.1", "ruff>=0.6"]
+
+[project.scripts]
+racecar-ppo = "racecar_ppo.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/racecar_ppo"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [".vendor", ".uv-cache", ".python", ".conda-env", ".conda-pkgs", ".venv", ".tools", ".mamba-root"]
+
