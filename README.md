@@ -7,9 +7,9 @@
 Train a continuous-control PPO agent to drive a simulated race car using only LiDAR and motion sensors. Tensor Optix handles the training loop: adaptive hyperparameters, validation checkpoints, rollback on degradation, and best-policy restoration.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/judejulius/racecar-ppo?style=social)](https://github.com/judejulius/racecar-ppo/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/judejulius/racecar-ppo?style=social)](https://github.com/judejulius/racecar-ppo/network/members)
-[![GitHub Issues](https://img.shields.io/github/issues/judejulius/racecar-ppo)](https://github.com/judejulius/racecar-ppo/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/judejulius/self_driving_ppo?style=social)](https://github.com/judejulius/self_driving_ppo/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/judejulius/self_driving_ppo?style=social)](https://github.com/judejulius/self_driving_ppo/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/judejulius/self_driving_ppo)](https://github.com/judejulius/self_driving_ppo/issues)
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.11+-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Gymnasium](https://img.shields.io/badge/Gymnasium-1.x-0081A5)](https://gymnasium.farama.org/)
@@ -20,7 +20,7 @@ Train a continuous-control PPO agent to drive a simulated race car using only Li
 
 **If you find this project useful, please consider giving it a star!** It helps others discover the project.
 
-[**Give it a Star**](https://github.com/judejulius/racecar-ppo) &#11088;
+[**Give it a Star**](https://github.com/judejulius/self_driving_ppo) &#11088;
 
 </div>
 
@@ -28,7 +28,7 @@ Train a continuous-control PPO agent to drive a simulated race car using only Li
 
 ## Table of Contents
 
-- [Why Racecar PPO?](#why-racecar-ppo)
+- [Why Racecar PPO?](#why-self_driving_ppo)
 - [Features](#features)
   - [Continuous PPO Policy](#continuous-ppo-policy)
   - [Compact Sensor Observations](#compact-sensor-observations)
@@ -164,8 +164,8 @@ Racecar Gym  ──►  PyBullet physics @ 100 Hz
 ### Windows Setup
 
 ```powershell
-git clone https://github.com/judejulius/racecar-ppo.git
-cd racecar-ppo
+git clone https://github.com/judejulius/self_driving_ppo.git
+cd self_driving_ppo
 Set-ExecutionPolicy -Scope Process Bypass
 .\scripts\bootstrap.ps1
 ```
@@ -175,8 +175,8 @@ This creates a local `.conda-env\` with Python 3.11 and PyBullet, clones Racecar
 ### Linux / macOS Setup
 
 ```bash
-git clone https://github.com/judejulius/racecar-ppo.git
-cd racecar-ppo
+git clone https://github.com/judejulius/self_driving_ppo.git
+cd self_driving_ppo
 bash scripts/bootstrap.sh
 ```
 
@@ -196,8 +196,8 @@ Check the whole pipeline in about a minute:
 
 ```bash
 # Linux / macOS
-uv run racecar-ppo train --track circle_ccw --episodes 3 --window-size 256
-uv run racecar-ppo evaluate --track circle_ccw --steps 300
+uv run self_driving_ppo train --track circle_ccw --episodes 3 --window-size 256
+uv run self_driving_ppo evaluate --track circle_ccw --steps 300
 ```
 
 You should see `[PPO] update=... score=...` lines, then one summary line per checkpoint.
@@ -206,20 +206,20 @@ You should see `[PPO] update=... score=...` lines, then one summary line per che
 
 ## Usage Guide
 
-> On Windows, replace `uv run racecar-ppo` with `.\.conda-env\python.exe -m racecar_ppo.cli` in the examples below.
+> On Windows, replace `uv run self_driving_ppo` with `.\.conda-env\python.exe -m racecar_ppo.cli` in the examples below.
 
 ### Training
 
 A useful run on the simple oval track:
 
 ```bash
-uv run racecar-ppo train --track circle_ccw --episodes 160 --window-size 1024
+uv run self_driving_ppo train --track circle_ccw --episodes 160 --window-size 1024
 ```
 
 On a real circuit (the default track is `Austria`):
 
 ```bash
-uv run racecar-ppo train --episodes 300
+uv run self_driving_ppo train --episodes 300
 ```
 
 `--episodes` counts **Tensor Optix training windows**, not laps. Each window is `--window-size` simulator steps. Training may stop early when Tensor Optix detects convergence; the best policy is always restored before saving.
@@ -229,13 +229,13 @@ uv run racecar-ppo train --episodes 300
 Compare the early snapshot with the best policy (default paths):
 
 ```bash
-uv run racecar-ppo evaluate --track circle_ccw
+uv run self_driving_ppo evaluate --track circle_ccw
 ```
 
 Or pass any checkpoint directories:
 
 ```bash
-uv run racecar-ppo evaluate --track circle_ccw --steps 5000 artifacts/ppo_best runs/exp2/ppo_best
+uv run self_driving_ppo evaluate --track circle_ccw --steps 5000 artifacts/ppo_best runs/exp2/ppo_best
 ```
 
 Each checkpoint prints one line:
@@ -253,8 +253,8 @@ Always evaluate on the same `--track` (or `--scenario`) you trained on.
 Built-in tracks come from Racecar Gym (for example `Austria`, `Barcelona`, `Berlin`, `Columbia`, `Gbr`, `Montreal`, `Plechaty`, `Torino`, `Treitlstrasse`, `circle_cw`, `circle_ccw`). To use your own [Racecar Gym scenario](https://github.com/axelbr/racecar_gym#scenarios):
 
 ```bash
-uv run racecar-ppo train --scenario path/to/scenario.yml --episodes 300
-uv run racecar-ppo evaluate --scenario path/to/scenario.yml
+uv run self_driving_ppo train --scenario path/to/scenario.yml --episodes 300
+uv run self_driving_ppo evaluate --scenario path/to/scenario.yml
 ```
 
 ### Training Outputs
@@ -274,7 +274,7 @@ Use `--output-dir` to keep multiple runs apart.
 
 ## CLI Reference
 
-### `racecar-ppo train`
+### `self_driving_ppo train`
 
 | Flag | Default | Description |
 |------|---------|-------------|
@@ -286,7 +286,7 @@ Use `--output-dir` to keep multiple runs apart.
 | `--seed` | `7` | Random seed |
 | `--output-dir` | `artifacts` | Where outputs are written |
 
-### `racecar-ppo evaluate`
+### `self_driving_ppo evaluate`
 
 | Flag | Default | Description |
 |------|---------|-------------|
@@ -315,7 +315,7 @@ Use `--output-dir` to keep multiple runs apart.
 ## Project Structure
 
 ```text
-racecar-ppo/
+self_driving_ppo/
 ├── src/racecar_ppo/
 │   ├── cli.py          # `train` and `evaluate` commands
 │   ├── env.py          # RacecarPPOEnv wrapper + reward shaping
