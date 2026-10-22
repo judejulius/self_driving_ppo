@@ -7,9 +7,9 @@
 Train a continuous-control PPO agent to drive a simulated race car using only LiDAR and motion sensors. Tensor Optix handles the training loop: adaptive hyperparameters, validation checkpoints, rollback on degradation, and best-policy restoration.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/YOUR_GITHUB_USER/racecar-ppo?style=social)](https://github.com/YOUR_GITHUB_USER/racecar-ppo/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/YOUR_GITHUB_USER/racecar-ppo?style=social)](https://github.com/YOUR_GITHUB_USER/racecar-ppo/network/members)
-[![GitHub Issues](https://img.shields.io/github/issues/YOUR_GITHUB_USER/racecar-ppo)](https://github.com/YOUR_GITHUB_USER/racecar-ppo/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/judejulius/racecar-ppo?style=social)](https://github.com/judejulius/racecar-ppo/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/judejulius/racecar-ppo?style=social)](https://github.com/judejulius/racecar-ppo/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/judejulius/racecar-ppo)](https://github.com/judejulius/racecar-ppo/issues)
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.11+-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Gymnasium](https://img.shields.io/badge/Gymnasium-1.x-0081A5)](https://gymnasium.farama.org/)
@@ -20,7 +20,7 @@ Train a continuous-control PPO agent to drive a simulated race car using only Li
 
 **If you find this project useful, please consider giving it a star!** It helps others discover the project.
 
-[**Give it a Star**](https://github.com/YOUR_GITHUB_USER/racecar-ppo) &#11088;
+[**Give it a Star**](https://github.com/judejulius/racecar-ppo) &#11088;
 
 </div>
 
@@ -164,7 +164,7 @@ Racecar Gym  ──►  PyBullet physics @ 100 Hz
 ### Windows Setup
 
 ```powershell
-git clone https://github.com/YOUR_GITHUB_USER/racecar-ppo.git
+git clone https://github.com/judejulius/racecar-ppo.git
 cd racecar-ppo
 Set-ExecutionPolicy -Scope Process Bypass
 .\scripts\bootstrap.ps1
@@ -175,7 +175,7 @@ This creates a local `.conda-env\` with Python 3.11 and PyBullet, clones Racecar
 ### Linux / macOS Setup
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USER/racecar-ppo.git
+git clone https://github.com/judejulius/racecar-ppo.git
 cd racecar-ppo
 bash scripts/bootstrap.sh
 ```
