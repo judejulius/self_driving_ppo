@@ -378,4 +378,7 @@ Please open an issue first for larger changes, such as new algorithms or observa
 
 This project is licensed under the [MIT License](LICENSE).
 
-Racecar Gym and Tensor Optix are separate projects with their own licenses. They're cloned at setup time and not redistributed here.
+## Acknowledgments
+Special thanks to [@sup3rus3r](https://github.com/sup3rus3r) for their work on [Tensor Optix](https://github.com/sup3rus3r/tensor-optix).
+
+This project was inspired by their implementation, and their work served as a valuable reference during development.
